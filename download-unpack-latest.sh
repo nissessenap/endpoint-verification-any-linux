@@ -13,7 +13,7 @@ curl https://packages.cloud.google.com/apt/dists/endpoint-verification-unstable/
 # show version to user
 grep Version unpacked/Packages
 # grab .deb url
-DEB_URL="https://packages.cloud.google.com/apt/$(grep Filename unpacked/Packages | sed -e 's/Filename: //g' | grep 'endpoint-verification_')"
+DEB_URL="https://packages.cloud.google.com/apt/$(grep Filename unpacked/Packages | sed -e 's/Filename: //g' | grep 'endpoint-verification_' | head -1)"
 echo "Downloading ${DEB_URL}" >>unpacked/download-log.txt
 curl -o unpacked/endpoint-verification.deb "${DEB_URL}" 2>>unpacked/download-log.txt || echo 'failed - check unpacked/download-log.txt'
 
@@ -55,4 +55,3 @@ popd
 echo "OK!"
 echo ' '
 echo 'Now run sudo ./install-systemd.sh or sudo ./install-rc.d-systemctl.sh.'
-
