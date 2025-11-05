@@ -9,10 +9,16 @@ This project adapts the Debian/Ubuntu-only 'Endpoint Verification' native helper
 3. Run `./download-unpack-latest.sh`
 4. If this succeeds:
 
-- run `sudo ./install-systemd.sh` on e.g. Arch Linux and other systemd-using distros
-- or `sudo ./install-rc.d-systemctl.sh` to use Google's built-in install script on distributions that have 'update-rc.d' but use 'systemctl .. start' to start services.
+- run `sudo ./install-systemd.sh` on e.g. Arch Linux, Fedora and other systemd-using distros
+- or `sudo ./install-rc.d-systemctl.sh` to use Google's built-in install script on distributions that have 'update-rc.d' but use 'systemctl .. start' to start services (probably not used by anyone at Kognic).
 
 The install script will **ask** you whether you wish to install the Native Messaging helper application for **Google Chrome** and/or **Chromium** (they use different paths). It seems to work fine in Chromium.
+
+Verify that it is running with:
+
+``` Bash
+systemctl status endpoint-verification
+```
 
 ## Future work
 
